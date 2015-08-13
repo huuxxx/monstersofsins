@@ -62,10 +62,10 @@ public class EventManager : MonoBehaviour
 
 	public enum GameState
 	{
-		MainMenu,
-		CultureSelect,
-		Mainstream,
-		Subculture,
+		MAINMENU,
+		CULTURESELECT,
+		MAINSTREAM,
+		SUBCULTURE,
 	}
 	
 	public GameState state;
@@ -74,24 +74,28 @@ public class EventManager : MonoBehaviour
 	{
 		musicSource = menuAudioSource;
 		sfxSource = menuAudioSource;
+		yield return 0;
 	}
 
 	IEnumerator CultureSelect()
 	{
 		musicSource = cultureselectAudioSource;
 		sfxSource = cultureselectAudioSource;
+		yield return 0;
 	}
 
 	IEnumerator Mainstream()
 	{
 		musicSource = mainstreamAudioSource;
 		sfxSource = mainstreamAudioSource;
+		yield return 0;
 	}
 
 	IEnumerator Subculture()
 	{
 		musicSource = subcultureAudioSource;
 		sfxSource = subcultureAudioSource;
+		yield return 0;
 	}
 	#endregion
 

@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Menus : MonoBehaviour
 {
-
-
 	void Start ()
 	{
 	
@@ -15,6 +13,7 @@ public class Menus : MonoBehaviour
 		if (Input.GetKeyDown ("space"))
 		{
 			Application.LoadLevel(1);
+			EventManager.GameState = EventManager.GameState.Mainstream;
 		}
 	}
 }
