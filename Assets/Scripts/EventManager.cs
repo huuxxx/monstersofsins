@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
 
 {
 	#region Game variables
+
 	// Player variables
 
 	public int mainStatus;
@@ -38,13 +39,60 @@ public class EventManager : MonoBehaviour
 	private const string audioEnabledKey = "IsAudioEnabled";
 	
 	[SerializeField]
-	private AudioSource _musicSource = null;
+	private AudioSource musicSource = null;
 	
 	[SerializeField]
-	private AudioSource _sfxSource = null;
+	private AudioSource sfxSource = null;
 	
 	[SerializeField]
-	private AudioClip[] _soundEffects = null;
+	private AudioClip[] soundEffects = null;
+
+	public AudioSource menuAudioSource;
+
+	public AudioSource cultureselectAudioSource;
+
+	public AudioSource mainstreamAudioSource;
+
+	public AudioSource subcultureAudioSource;
+	#endregion
+
+	#region GameStates
+	// Finite state machine for current scene
+	// YOU MUST SET THE CURRENT STATE EXTERNALLY UPON CHANGING SCENE
+
+	public enum GameState
+	{
+		MainMenu,
+		CultureSelect,
+		Mainstream,
+		Subculture,
+	}
+	
+	public GameState state;
+	
+	IEnumerator MainMenu()
+	{
+		musicSource = menuAudioSource;
+		sfxSource = menuAudioSource;
+	}
+
+	IEnumerator CultureSelect()
+	{
+		musicSource = cultureselectAudioSource;
+		sfxSource = cultureselectAudioSource;
+	}
+
+	IEnumerator Mainstream()
+	{
+		musicSource = mainstreamAudioSource;
+		sfxSource = mainstreamAudioSource;
+	}
+
+	IEnumerator Subculture()
+	{
+		musicSource = subcultureAudioSource;
+		sfxSource = subcultureAudioSource;
+	}
 	#endregion
 
 	// Set the singleton and maintain it
@@ -69,22 +117,22 @@ public class EventManager : MonoBehaviour
 	#region Audio Functions
 	public bool audioEnabled
 	{
-		get { return !_musicSource.mute; }
+		get { return !musicSource.mute; }
 		set
 		{
-			if (_musicSource.mute == value)
+			if (musicSource.mute == value)
 			{
-				_musicSource.mute = !value;
-				_sfxSource.mute = !value;
+				musicSource.mute = !value;
+				sfxSource.mute = !value;
 				PlayerPrefs.SetInt(audioEnabledKey, value ? 1 : 0);
 				
 				if (!value)
 				{
-					_musicSource.Stop();
+					musicSource.Stop();
 				}
 				else
 				{
-					_musicSource.Play();
+					musicSource.Play();
 				}
 			}
 		}
@@ -92,16 +140,16 @@ public class EventManager : MonoBehaviour
 
 	public float musicPlayTime
 	{
-		get { return _musicSource.time; }
+		get { return musicSource.time; }
 	}
 	
 	public void PlaySfx(string name)
 	{
-		foreach (var clip in _soundEffects)
+		foreach (var clip in soundEffects)
 		{
 			if (clip.name == name)
 			{
-				_sfxSource.PlayOneShot(clip);
+				sfxSource.PlayOneShot(clip);
 				break;
 			}
 		}
