@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EventManager : MonoBehaviour
 
-	// Persistent singleton class to manager overall game data
+	// Persistent singleton class to manage overall game data
 	// ATTACH ONE OF THESE SCRIPTS TO AN EMPTY GAME OBJECT IN EVERY SCENE
 	// IT WILL AUTOMATICALLY SEARCH AND DESTROY DUPLICATES
 
@@ -11,21 +11,19 @@ public class EventManager : MonoBehaviour
 	#region Game variables
 	// Player variables
 
-	public int checkPoint = 0;
-
 	public int mainStatus;
 
 	public int subStatus;
-
-	public bool paused = false;
-
-	public bool damageTaken = false;
-
+	
 	// Game state variables
 
-	public float invulnTimer = 0;
+	public int checkPoint = 0;
 
-	public bool pauseDelay = false;
+	public bool paused = false;
+	
+	public bool damageTaken = false;
+
+	public float invulnTimer = 0;
 
 	public bool mainstreamCurrent = false;
 
@@ -159,7 +157,7 @@ public class EventManager : MonoBehaviour
 	}
 
 	// Make player temporarily invulnerable after taking damage and check for death
-	public void DamageDelay()
+	public void DamageManager()
 	{
 		if (mainstreamCurrent && mainStatus <= 0)
 		{
@@ -195,7 +193,7 @@ public class EventManager : MonoBehaviour
 	// Pause function
 	public void Pause()
 	{
-		Debug.Log ("Paused");
+		print ("Paused");
 		Time.timeScale = 0;
 		paused = true;
 	}
@@ -204,7 +202,7 @@ public class EventManager : MonoBehaviour
 	public void Unpause()
 	{
 		Time.timeScale = 1;
-		Debug.Log ("Unpaused");
+		print ("Unpaused");
 		paused = false;
 	}
 }

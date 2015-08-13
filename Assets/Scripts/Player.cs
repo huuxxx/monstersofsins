@@ -33,6 +33,11 @@ public class Player : MonoBehaviour
 		// Function calls
 		Grounded ();
 		Controls ();
+
+	}
+
+	void Update()
+	{
 		Pause ();
 	}
 
@@ -119,20 +124,21 @@ public class Player : MonoBehaviour
 	private void Pause()
 	{
 		// Pause
-		if ((Input.GetKeyDown (KeyCode.P) && EventManager.instance.paused == false))
+		if (Input.GetKeyDown (KeyCode.P))
 		{
-			EventManager.instance.Pause ();
-			//EventManager.instance.paused = true;
-		}
-		
-		// Unpause
-		if ((Input.GetKeyDown (KeyCode.P) && EventManager.instance.pauseDelay == true))
-		{
-			Debug.Log ("Unpaused");
-			EventManager.instance.Unpause ();
-			//EventManager.instance.paused = false;
-		}
+			if (EventManager.instance.paused == false)
+			{
+				EventManager.instance.Pause ();
+			}
+
+			// Unpause
+			else if (EventManager.instance.paused == true)
+			{		
+				EventManager.instance.Unpause ();
+			}
+		}		
 	}
+
 
 	// Send message receiver for ladder state
 	void Ladder(float ladderState)

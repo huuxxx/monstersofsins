@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CollisionManager : MonoBehaviour
@@ -89,7 +89,7 @@ public class CollisionManager : MonoBehaviour
 			else if (damageCollider && EventManager.instance.damageTaken == false)
 			
 			{
-				EventManager.instance.DamageDelay ();
+				EventManager.instance.DamageManager ();
 				EventManager.instance.damageTaken = true;
 
 				if (EventManager.instance.mainstreamCurrent && subcultureNPC == true)
