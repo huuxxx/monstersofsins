@@ -13,7 +13,7 @@ public class Menus : MonoBehaviour
 		if (Input.GetKeyDown ("space"))
 		{
 			Application.LoadLevel(1);
-			EventManager.GameState = EventManager.GameState.Mainstream;
+			EventManager.states CurrentState = EventManager.states.MAINSTREAM;
 		}
 	}
 }

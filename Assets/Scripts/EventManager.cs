@@ -60,15 +60,24 @@ public class EventManager : MonoBehaviour
 	// Finite state machine for current scene
 	// YOU MUST SET THE CURRENT STATE EXTERNALLY UPON CHANGING SCENE
 
-	public enum GameState
+	public enum states
 	{
 		MAINMENU,
 		CULTURESELECT,
 		MAINSTREAM,
 		SUBCULTURE,
+		NONE,
 	}
 	
-	public GameState state;
+	states CurrentState = states.NONE;
+
+	public void GameStates()
+	{
+		if (CurrentState == states.NONE)
+		{
+			return;
+		}
+	}
 	
 	IEnumerator MainMenu()
 	{
