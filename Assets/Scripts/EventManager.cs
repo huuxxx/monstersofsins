@@ -12,9 +12,9 @@ public class EventManager : MonoBehaviour
 
 	// Player variables
 
-	public int mainStatus;
+	public float mainStatus;
 
-	public int subStatus;
+	public float subStatus;
 
 	public bool male;
 

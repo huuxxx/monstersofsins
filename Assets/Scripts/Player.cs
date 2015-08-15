@@ -7,7 +7,11 @@ public class Player : MonoBehaviour
 
 	public GameObject player;
 
+	public GameObject statusBar;
+
 	public Rigidbody playerRigid;
+
+	public Material statusColour;
 
 	public float movementForce = 15;
 
@@ -33,7 +37,7 @@ public class Player : MonoBehaviour
 		// Function calls
 		Grounded ();
 		Controls ();
-
+		StatusBar ();
 	}
 
 	void Update()
@@ -155,6 +159,47 @@ public class Player : MonoBehaviour
 		if (!climbingLadder)
 		{
 			i = 0;
+		}
+	}
+
+	// Scale and colour status bar depending on current culture and amound of status
+	public void StatusBar()
+	{
+		if (EventManager.instance.mainstreamCurrent)
+		{
+			statusBar.transform.localScale = new Vector3 ((EventManager.instance.mainStatus / 100) * 20, 1, 1);
+			if (EventManager.instance.mainStatus <= 20)
+			{
+				statusColour.color = Color.red;
+			}
+		
+			if (EventManager.instance.mainStatus > 20 && EventManager.instance.mainStatus < 80)
+			{
+				statusColour.color = Color.yellow;
+			}
+		
+			if (EventManager.instance.mainStatus > 80)
+			{
+				statusColour.color = Color.green;
+			}
+		}
+		else if (EventManager.instance.subcultureCurrent)
+		{
+			statusBar.transform.localScale = new Vector3 ((EventManager.instance.subStatus / 100) * 20, 1, 1);
+			if (EventManager.instance.subStatus <= 20)
+			{
+				statusColour.color = Color.red;
+			}
+		
+			if (EventManager.instance.subStatus > 20 && EventManager.instance.subStatus < 80)
+			{
+				statusColour.color = Color.yellow;
+			}
+		
+			if (EventManager.instance.subStatus > 80)
+			{
+				statusColour.color = Color.green;
+			}
 		}
 	}
 }
