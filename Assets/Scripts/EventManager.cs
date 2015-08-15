@@ -51,14 +51,21 @@ public class EventManager : MonoBehaviour
 	[SerializeField]
 	private AudioClip[] soundEffects = null;
 
-	public AudioSource menuAudioSource;
+	[SerializeField]
+	private AudioClip[] maleMainTaunts = null;
 
-	public AudioSource cultureselectAudioSource;
+	[SerializeField]
+	private AudioClip[] femaleMainTaunts = null;
 
-	public AudioSource mainstreamAudioSource;
+	[SerializeField]
+	private AudioClip[] maleSubTaunts = null;
 
-	public AudioSource subcultureAudioSource;
+	[SerializeField]
+	private AudioClip[] femaleSubTaunts = null;
 
+	[SerializeField]
+	private AudioClip[] riffs = null;
+	
 	// GUI variables
 
 	public GameObject hallPicture;
@@ -92,29 +99,21 @@ public class EventManager : MonoBehaviour
 	
 	IEnumerator MainMenu()
 	{
-		musicSource = menuAudioSource;
-		sfxSource = menuAudioSource;
 		yield return 0;
 	}
 
 	IEnumerator CultureSelect()
 	{
-		musicSource = cultureselectAudioSource;
-		sfxSource = cultureselectAudioSource;
 		yield return 0;
 	}
 
 	IEnumerator Mainstream()
 	{
-		musicSource = mainstreamAudioSource;
-		sfxSource = mainstreamAudioSource;
 		yield return 0;
 	}
 
 	IEnumerator Subculture()
 	{
-		musicSource = subcultureAudioSource;
-		sfxSource = subcultureAudioSource;
 		yield return 0;
 	}
 	#endregion
@@ -179,7 +178,6 @@ public class EventManager : MonoBehaviour
 		}
 	}
 	
-
 	public void ToggleAudio()
 	{
 		audioEnabled = !audioEnabled;
@@ -228,7 +226,7 @@ public class EventManager : MonoBehaviour
 		hallPicture.gameObject.SetActive(false);
 		classPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(5f);
-		Application.LoadLevel (3);
+		Application.LoadLevel (4);
 		
 	}
 
@@ -239,7 +237,7 @@ public class EventManager : MonoBehaviour
 		hallPicture.gameObject.SetActive(false);
 		classPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(5f);
-		Application.LoadLevel (3);
+		Application.LoadLevel (4);
 		
 	}
 
