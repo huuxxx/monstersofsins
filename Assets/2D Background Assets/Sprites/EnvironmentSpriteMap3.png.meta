@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: fa6c720a918d4034382b2a9bc813f29e
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Mountain_8
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 1711
+        width: 706
+        height: 161
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Mountain_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1898
+        width: 1050
+        height: 77
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Mountain_9
+      rect:
+        serializedVersion: 2
+        x: 1487
+        y: 946
+        width: 489
+        height: 616
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Mountain_10
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 552
+        width: 549
+        height: 349
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Mountain_11
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 59
+        width: 482
+        height: 402
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Mountain_12
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 45
+        width: 505
+        height: 419
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Building_1
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 871
+        width: 238
+        height: 366
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Building_3
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 595
+        width: 220
+        height: 250
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Building_4
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 49
+        width: 216
+        height: 526
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Building_2
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 679
+        width: 198
+        height: 554
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Building_6
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 51
+        width: 210
+        height: 564
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Building_5
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 47
+        width: 126
+        height: 601
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Building_7
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 515
+        width: 458
+        height: 408
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Road_2
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 655
+        width: 58
+        height: 352
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Road_1
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 1049
+        width: 766
+        height: 108
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Road_3
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 741
+        width: 41
+        height: 206
+      alignment: 0
+      pivot: {x: .5, y: .5}
+  spritePackingTag: 
+  userData: 
