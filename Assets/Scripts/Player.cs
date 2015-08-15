@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
 
 	public float jumpForce = 75;
 
+	public Animator playerAnimate;
+
 	private bool grounded = false;
 
 	private bool rightFaced;
@@ -43,6 +45,7 @@ public class Player : MonoBehaviour
 	void Update()
 	{
 		Pause ();
+		Animate ();
 	}
 
 	// Flip sprite depending on direction
@@ -102,7 +105,7 @@ public class Player : MonoBehaviour
 		// Jump
 		if ((grounded == true) && (v > 0) && (!climbingLadder))
 		{
-			playerRigid.AddForce(Vector3.up * jumpForce);
+			playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 		}
 
 		// Climb
@@ -200,6 +203,22 @@ public class Player : MonoBehaviour
 			{
 				statusColour.color = Color.green;
 			}
+		}
+	}
+
+	void Animate(){
+		if (!grounded) {
+			playerAnimate.SetBool ("Jump", true);
+			playerAnimate.SetBool ("Run", false);
+		} else {
+			playerAnimate.SetBool ("Jump", false);
+		}
+
+		if (h != 0 && grounded){
+			playerAnimate.SetBool ("Run", true);
+		} else {
+
+			playerAnimate.SetBool ("Run", false);
 		}
 	}
 }
