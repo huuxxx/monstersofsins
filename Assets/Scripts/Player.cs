@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
 		}
 		
 		// Jump
-		if ((grounded == true) && (v > 0) && (!climbingLadder))
+		if ((grounded == true) && Input.GetButtonDown("Jump") && (!climbingLadder))
 		{
 			playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 		}
@@ -116,11 +116,11 @@ public class Player : MonoBehaviour
 			// Ascend
 			if (v > 0)
 			{
-				player.transform.Translate(Vector3.up * (movementForce / 2.5f) * Mathf.Abs (v) * Time.deltaTime);
+				player.transform.Translate(Vector3.up * (movementForce / 3.5f) * Mathf.Abs (v) * Time.deltaTime);
 			}
 
 			// Descend
-			else player.transform.Translate(Vector3.down * (movementForce / 2.5f) * Mathf.Abs (v) * Time.deltaTime);
+			else player.transform.Translate(Vector3.down * (movementForce / 3.5f) * Mathf.Abs (v) * Time.deltaTime);
 		}
 		
 		else playerRigid.useGravity = true;
@@ -154,6 +154,7 @@ public class Player : MonoBehaviour
 
 		if (i == 1)
 		{
+			playerRigid.velocity = Vector3.zero;
 			climbingLadder = true;
 		}
 

@@ -32,7 +32,6 @@ public class CollisionManager : MonoBehaviour
 		// Do action determined by bool setting
 		if (temp.gameObject.tag == "Player")
 		{
-			Debug.Log ("A collision has occured!");
 
 			EventManager.instance.PlaySfx("Status Gain");
 
