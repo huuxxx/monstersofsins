@@ -34,8 +34,8 @@ public class PlayerCamera : MonoBehaviour
 			
 			interpVelocity = targetDirection.magnitude * cameraChaseSpeed;
 			
-			targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime); 
-			
+			targetPos =  new Vector3 (target.transform.position.x, target.transform.position.y + 3, target.transform.position.z - 10) + (targetDirection.normalized * interpVelocity * Time.deltaTime);
+						
 			transform.position = Vector3.Lerp( transform.position, targetPos, 0.25f);
 			
 		}

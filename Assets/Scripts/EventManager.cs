@@ -15,6 +15,10 @@ public class EventManager : MonoBehaviour
 	public int mainStatus;
 
 	public int subStatus;
+
+	public bool male;
+
+	public bool female;
 	
 	// Game state variables
 
@@ -54,6 +58,13 @@ public class EventManager : MonoBehaviour
 	public AudioSource mainstreamAudioSource;
 
 	public AudioSource subcultureAudioSource;
+
+	// GUI variables
+
+	public GameObject hallPicture;
+
+	public GameObject classPicture;
+
 	#endregion
 
 	#region GameStates
@@ -168,12 +179,97 @@ public class EventManager : MonoBehaviour
 		}
 	}
 	
+
 	public void ToggleAudio()
 	{
 		audioEnabled = !audioEnabled;
 	}
 	#endregion
+
+	#region GUI Functions
+	public void Male()
+	{
+		male = true;
+		Application.LoadLevel (1);
+	}
 	
+	public void Female()
+	{
+		female = true;
+		Application.LoadLevel (1);
+	}
+
+	IEnumerator MainstreamMaleIntro()
+	{
+		hallPicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(5f);
+		hallPicture.gameObject.SetActive(false);
+		classPicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(5f);
+		Application.LoadLevel (2);
+		
+	}
+
+	IEnumerator MainstreamFemaleIntro()
+	{
+		hallPicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(5f);
+		hallPicture.gameObject.SetActive(false);
+		classPicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(5f);
+		Application.LoadLevel (2);
+		
+	}
+
+	IEnumerator SubcultureMaleIntro()
+	{
+		hallPicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(5f);
+		hallPicture.gameObject.SetActive(false);
+		classPicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(5f);
+		Application.LoadLevel (3);
+		
+	}
+
+	IEnumerator SubcultureFemaleIntro()
+	{
+		hallPicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(5f);
+		hallPicture.gameObject.SetActive(false);
+		classPicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(5f);
+		Application.LoadLevel (3);
+		
+	}
+
+	public void MainstreamGUI()
+	{
+		NewGame ();
+		mainstreamCurrent = true;
+
+		if (male == true)
+		{
+			StartCoroutine("MainstreamMaleIntro");
+		}
+		else StartCoroutine("MainstreamFemaleIntro");
+
+	}
+	
+	public void SubcultureGUI()
+	{
+		NewGame ();
+		subcultureCurrent = true;
+
+		if (male == true)
+		{
+			StartCoroutine("SubcultureMaleIntro");
+		}
+		else StartCoroutine("SubcultureFemaleIntro");
+
+	}
+	#endregion
+
 	void Awake() 
 	{
 		// Set starting status
