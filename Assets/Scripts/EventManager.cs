@@ -52,18 +52,6 @@ public class EventManager : MonoBehaviour
 	private AudioClip[] soundEffects = null;
 
 	[SerializeField]
-	private AudioClip[] maleMainTaunts = null;
-
-	[SerializeField]
-	private AudioClip[] femaleMainTaunts = null;
-
-	[SerializeField]
-	private AudioClip[] maleSubTaunts = null;
-
-	[SerializeField]
-	private AudioClip[] femaleSubTaunts = null;
-
-	[SerializeField]
 	private AudioClip[] riffs = null;
 	
 	// GUI variables
@@ -71,6 +59,10 @@ public class EventManager : MonoBehaviour
 	public GameObject hallPicture;
 
 	public GameObject classPicture;
+
+	public GameObject failPicture;
+
+	public GameObject burgerKanePicture;
 
 	#endregion
 
@@ -199,50 +191,79 @@ public class EventManager : MonoBehaviour
 
 	IEnumerator MainstreamMaleIntro()
 	{
+		//EventManager.instance.PlaySfx ("MaleMainOpening");
 		hallPicture.gameObject.SetActive(true);
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(9.3f);
 		hallPicture.gameObject.SetActive(false);
 		classPicture.gameObject.SetActive(true);
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(4f);
+		classPicture.gameObject.SetActive(false);
+		failPicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(7f);
+		failPicture.gameObject.SetActive(false);
+		burgerKanePicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(8f);
 		Application.LoadLevel (2);
 		
 	}
 
 	IEnumerator MainstreamFemaleIntro()
 	{
+		//EventManager.instance.PlaySfx ("FemMainOpening");
 		hallPicture.gameObject.SetActive(true);
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(11f);
 		hallPicture.gameObject.SetActive(false);
 		classPicture.gameObject.SetActive(true);
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(6f);
+		classPicture.gameObject.SetActive(false);
+		failPicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(16f);
+		failPicture.gameObject.SetActive(false);
+		burgerKanePicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(6f);
 		Application.LoadLevel (2);
 		
 	}
 
 	IEnumerator SubcultureMaleIntro()
 	{
+		//EventManager.instance.PlaySfx ("MaleSubOpening");
 		hallPicture.gameObject.SetActive(true);
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(6f);
 		hallPicture.gameObject.SetActive(false);
 		classPicture.gameObject.SetActive(true);
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(8f);
+		classPicture.gameObject.SetActive(false);
+		failPicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(11f);
+		failPicture.gameObject.SetActive(false);
+		burgerKanePicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(12f);
 		Application.LoadLevel (4);
 		
 	}
 
 	IEnumerator SubcultureFemaleIntro()
 	{
+		//EventManager.instance.PlaySfx ("FemSubOpening");
 		hallPicture.gameObject.SetActive(true);
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(7.5f);
 		hallPicture.gameObject.SetActive(false);
 		classPicture.gameObject.SetActive(true);
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(8.3f);
+		classPicture.gameObject.SetActive(false);
+		failPicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(11f);
+		failPicture.gameObject.SetActive(false);
+		burgerKanePicture.gameObject.SetActive(true);
+		yield return new WaitForSeconds(9f);
 		Application.LoadLevel (4);
 		
 	}
 
 	public void MainstreamGUI()
 	{
+		print ("work dammit!");
 		NewGame ();
 		mainstreamCurrent = true;
 
@@ -256,6 +277,7 @@ public class EventManager : MonoBehaviour
 	
 	public void SubcultureGUI()
 	{
+		print ("work dammit!");
 		NewGame ();
 		subcultureCurrent = true;
 
