@@ -33,7 +33,6 @@ public class DoggyBark : MonoBehaviour {
 	void OnTriggerEnter (Collider col) {
 		
 		if (col.gameObject.tag == "Player") {
-			print ("hit");
 			dogBark.Play();
 			dogAnim.SetBool("Bark 0", true);
 			barkTimer = 5f;

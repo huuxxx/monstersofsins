@@ -19,6 +19,7 @@ public class EnemyAI1 : MonoBehaviour
 
 	void Start ()
 	{
+		enemy = this.gameObject;
 		// Roll a number for first direction to move
 		spawnDir = Random.Range (1, 10);
 

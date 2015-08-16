@@ -28,6 +28,10 @@ public class EnemyAI2 : MonoBehaviour
 	
 	void Start ()
 	{
+	
+		enemy = this.gameObject;
+		enemyRigid = GetComponent<Rigidbody> ();
+
 		// Roll a number for first direction to move
 		spawnDir = Random.Range (1, 10);
 		

@@ -5,8 +5,6 @@ public class Projectile : MonoBehaviour
 {
 	// Script to handle enemy projectiles
 
-	public GameObject projectile;
-
 	public Rigidbody projRigid;
 
 	public int projForce = 15;
@@ -26,7 +24,7 @@ public class Projectile : MonoBehaviour
 
 		if (destroyTimer >= 2)
 		{
-			GameObject.Destroy(projectile);
+			GameObject.Destroy(this.gameObject);
 		}
 	}
 
