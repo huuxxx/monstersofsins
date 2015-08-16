@@ -25,6 +25,10 @@ public class Player : MonoBehaviour
 
 	public bool climbingLadder;
 
+	public float showoffLength = 3f;
+
+	private float showoffTimer;
+
 	private float h;
 
 	private float v;
@@ -35,11 +39,15 @@ public class Player : MonoBehaviour
 		// Get and set control inputs
 		h = Input.GetAxis("Horizontal");
 		v = Input.GetAxis("Vertical");
-
+		
 		// Function calls
 		Grounded ();
-		Controls ();
 		StatusBar ();
+
+		if (showoffTimer <= 0) {
+			Controls ();
+		}
+		showoffTimer -= Time.deltaTime;
 	}
 
 	void Update()
@@ -86,6 +94,13 @@ public class Player : MonoBehaviour
 	// Controls
 	private void Controls()
 	{
+		//Showoff
+		if (Input.GetKey (KeyCode.Space) && !climbingLadder && showoffTimer < 0f) {
+			//Play showoff audio
+			//Give rep if friendlies are in range and haven't been shownoff to yet
+			showoffTimer = showoffLength;
+		}
+
 		// Right
 		if (h > 0)
 		{
@@ -208,18 +223,26 @@ public class Player : MonoBehaviour
 	}
 
 	void Animate(){
-		if (!grounded) {
-			playerAnimate.SetBool ("Jump", true);
+
+		if (showoffTimer > 0) {
 			playerAnimate.SetBool ("Run", false);
-		} else {
 			playerAnimate.SetBool ("Jump", false);
-		}
-
-		if (h != 0 && grounded){
-			playerAnimate.SetBool ("Run", true);
+			playerAnimate.SetBool ("Showoff", true);
 		} else {
+			playerAnimate.SetBool ("Showoff", false);
+			if (!grounded) {
+				playerAnimate.SetBool ("Jump", true);
+				playerAnimate.SetBool ("Run", false);
+			} else {
+				playerAnimate.SetBool ("Jump", false);
+			}
 
-			playerAnimate.SetBool ("Run", false);
+			if (h != 0 && grounded) {
+				playerAnimate.SetBool ("Run", true);
+			} else {
+
+				playerAnimate.SetBool ("Run", false);
+			}
 		}
 	}
 }
