@@ -191,7 +191,7 @@ public class EventManager : MonoBehaviour
 
 	IEnumerator MainstreamMaleIntro()
 	{
-		//EventManager.instance.PlaySfx ("MaleMainOpening");
+		EventManager.instance.PlaySfx ("MaleMainOpening");
 		Instantiate (hallPicture, new Vector3 (0, 5, -6), Quaternion.identity);
 		//hallPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(9.3f);
@@ -208,12 +208,13 @@ public class EventManager : MonoBehaviour
 		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(8f);
 		Application.LoadLevel ("Mainstream");
+		EventManager.instance.PlaySfx ("MaleSubGameStart");
 		
 	}
 
 	IEnumerator MainstreamFemaleIntro()
 	{
-		//EventManager.instance.PlaySfx ("FemMainOpening");
+		EventManager.instance.PlaySfx ("FemMainOpening");
 		Instantiate (hallPicture, new Vector3 (0, 5, -6), Quaternion.identity);
 		//hallPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(11f);
@@ -230,12 +231,13 @@ public class EventManager : MonoBehaviour
 		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(6f);
 		Application.LoadLevel ("Mainstream");
+		EventManager.instance.PlaySfx ("FemMainGameStart");
 		
 	}
 
 	IEnumerator SubcultureMaleIntro()
 	{
-		//EventManager.instance.PlaySfx ("MaleSubOpening");
+		EventManager.instance.PlaySfx ("MaleSubOpening");
 		Instantiate (hallPicture, new Vector3 (0, 5, -6), Quaternion.identity);
 		//hallPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(6f);
@@ -252,12 +254,13 @@ public class EventManager : MonoBehaviour
 		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(12f);
 		Application.LoadLevel ("Subculture");
+		EventManager.instance.PlaySfx ("MaleSubGameStart");
 		
 	}
 
 	IEnumerator SubcultureFemaleIntro()
 	{
-		//EventManager.instance.PlaySfx ("FemSubOpening");
+		EventManager.instance.PlaySfx ("FemSubOpening");
 		Instantiate (hallPicture, new Vector3 (0, 5, -6), Quaternion.identity);
 		//hallPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(7.5f);
@@ -274,12 +277,12 @@ public class EventManager : MonoBehaviour
 		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(9f);
 		Application.LoadLevel ("Subculture");
+		EventManager.instance.PlaySfx ("FemSubGameStart");
 		
 	}
 
 	public void MainstreamGUI()
 	{
-		print ("work dammit!");
 		NewGame ();
 		mainstreamCurrent = true;
 
@@ -293,7 +296,6 @@ public class EventManager : MonoBehaviour
 	
 	public void SubcultureGUI()
 	{
-		print ("work dammit!");
 		NewGame ();
 		subcultureCurrent = true;
 
