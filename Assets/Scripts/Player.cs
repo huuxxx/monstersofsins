@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿ using UnityEngine;
 using System.Collections;
 
 public class Player : MonoBehaviour
@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 	// Script to handle player controls and most interactions
 
 	public GameObject player;
+
+	public GameObject playerSprite;
 
 	public GameObject statusBar;
 
@@ -33,6 +35,15 @@ public class Player : MonoBehaviour
 
 	private float v;
 
+	private GameObject showOffArea;
+
+	private float startXScale;
+
+	private float statusBarScale;
+
+	void Start(){
+		startXScale = playerSprite.transform.localScale.x;
+	}
 
 	void FixedUpdate ()
 	{
@@ -61,16 +72,16 @@ public class Player : MonoBehaviour
 	{
 		if (rightFaced)
 		{
-			Vector3 spriteScale = transform.localScale;
-			spriteScale.x = 1;
-			transform.localScale = spriteScale;
+			Vector3 spriteScale = playerSprite.transform.localScale;
+			spriteScale.x = startXScale;
+			playerSprite.transform.localScale = spriteScale;
 		}
 
 		if (!rightFaced)
 		{
-			Vector3 theScale = transform.localScale;
-			theScale.x = -1;
-			transform.localScale = theScale;
+			Vector3 theScale = playerSprite.transform.localScale;
+			theScale.x = -startXScale;
+			playerSprite.transform.localScale = theScale;
 		}
 
 		
@@ -82,7 +93,7 @@ public class Player : MonoBehaviour
 		Vector3 leftRay = new Vector3 (this.transform.position.x - 1, this.transform.position.y, this.transform.position.z);
 		Vector3 rightRay = new Vector3 (this.transform.position.x + 1, this.transform.position.y, this.transform.position.z);
 
-		if (Physics.Raycast (leftRay, Vector3.down, 2) || Physics.Raycast (rightRay, Vector3.down, 2) || Physics.Raycast (transform.position, Vector3.down, 2))
+		if (Physics.Raycast (leftRay, Vector3.down, 1.5f) || Physics.Raycast (rightRay, Vector3.down, 1.5f) || Physics.Raycast (transform.position, Vector3.down, 1.5f))
 		{
 			grounded = true;
 		}
@@ -95,10 +106,16 @@ public class Player : MonoBehaviour
 	private void Controls()
 	{
 		//Showoff
-		if (Input.GetKey (KeyCode.Space) && !climbingLadder && showoffTimer < 0f) {
-			//Play showoff audio
-			//Give rep if friendlies are in range and haven't been shownoff to yet
+		if (Input.GetKey (KeyCode.F) && !climbingLadder && showoffTimer < 0f) {
+			//Set timer that stops movement and plays animation
 			showoffTimer = showoffLength;
+	
+			//**Play showoff audio
+			
+			//Add status, disable that friendly.
+			if (showOffArea != null){
+					showOffArea.SendMessage("Showoff");
+			}
 		}
 
 		// Right
@@ -118,7 +135,7 @@ public class Player : MonoBehaviour
 		}
 		
 		// Jump
-		if ((grounded == true) && Input.GetButtonDown("Jump") && (!climbingLadder))
+		if ((grounded == true) && Input.GetButtonDown("Jump"))
 		{
 			playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 		}
@@ -186,7 +203,8 @@ public class Player : MonoBehaviour
 	{
 		if (EventManager.instance.mainstreamCurrent)
 		{
-			statusBar.transform.localScale = new Vector3 ((EventManager.instance.mainStatus / 100) * 20, 1, 1);
+			statusBarScale = Mathf.Lerp (statusBarScale, EventManager.instance.mainStatus / 100, Time.deltaTime);
+			statusBar.transform.localScale = new Vector3 (statusBarScale * 20, 1, 1);
 			if (EventManager.instance.mainStatus <= 20)
 			{
 				statusColour.color = Color.red;
@@ -204,7 +222,8 @@ public class Player : MonoBehaviour
 		}
 		else if (EventManager.instance.subcultureCurrent)
 		{
-			statusBar.transform.localScale = new Vector3 ((EventManager.instance.subStatus / 100) * 20, 1, 1);
+			statusBarScale = Mathf.Lerp (statusBarScale, EventManager.instance.subStatus / 100, Time.deltaTime);
+			statusBar.transform.localScale = new Vector3 (statusBarScale * 20, 1, 1);
 			if (EventManager.instance.subStatus <= 20)
 			{
 				statusColour.color = Color.red;
@@ -244,5 +263,13 @@ public class Player : MonoBehaviour
 				playerAnimate.SetBool ("Run", false);
 			}
 		}
+	}
+
+	void EnterFriendly(GameObject area){
+		showOffArea = area;
+	}
+
+	void ExitFriendly(){
+		showOffArea = null;
 	}
 }
