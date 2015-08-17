@@ -28,7 +28,7 @@ public class EnemyAI3 : MonoBehaviour {
 	{
 		throwTimer += Time.deltaTime;
 
-		if (throwTimer >= 1)
+		if (throwTimer >= 2)
 		{
 			Instantiate(projectile, projectileSpawn.transform.position, Quaternion.identity);
 			throwTimer = 0;

@@ -148,11 +148,11 @@ public class Player : MonoBehaviour
 			// Ascend
 			if (v > 0)
 			{
-				player.transform.Translate(Vector3.up * (movementForce / 3.5f) * Mathf.Abs (v) * Time.deltaTime);
+				player.transform.Translate(Vector3.up * (movementForce / 3f) * Mathf.Abs (v) * Time.deltaTime);
 			}
 
 			// Descend
-			else player.transform.Translate(Vector3.down * (movementForce / 3.5f) * Mathf.Abs (v) * Time.deltaTime);
+			else player.transform.Translate(Vector3.down * (movementForce / 3f) * Mathf.Abs (v) * Time.deltaTime);
 		}
 		
 		else playerRigid.useGravity = true;

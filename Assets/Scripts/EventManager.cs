@@ -192,72 +192,88 @@ public class EventManager : MonoBehaviour
 	IEnumerator MainstreamMaleIntro()
 	{
 		//EventManager.instance.PlaySfx ("MaleMainOpening");
-		hallPicture.gameObject.SetActive(true);
+		Instantiate (hallPicture, new Vector3 (0, 5, -6), Quaternion.identity);
+		//hallPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(9.3f);
-		hallPicture.gameObject.SetActive(false);
-		classPicture.gameObject.SetActive(true);
+		Instantiate (classPicture, new Vector3 (0, 5, -7), Quaternion.identity);
+		//hallPicture.gameObject.SetActive(false);
+		//classPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(4f);
-		classPicture.gameObject.SetActive(false);
-		failPicture.gameObject.SetActive(true);
+		Instantiate (failPicture, new Vector3 (0, 5, -8), Quaternion.identity);
+		//classPicture.gameObject.SetActive(false);
+		//failPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(7f);
-		failPicture.gameObject.SetActive(false);
-		burgerKanePicture.gameObject.SetActive(true);
+		Instantiate (burgerKanePicture, new Vector3 (0, 5, -9), Quaternion.identity);
+		//failPicture.gameObject.SetActive(false);
+		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(8f);
-		Application.LoadLevel (2);
+		Application.LoadLevel ("Mainstream");
 		
 	}
 
 	IEnumerator MainstreamFemaleIntro()
 	{
 		//EventManager.instance.PlaySfx ("FemMainOpening");
-		hallPicture.gameObject.SetActive(true);
+		Instantiate (hallPicture, new Vector3 (0, 5, -6), Quaternion.identity);
+		//hallPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(11f);
-		hallPicture.gameObject.SetActive(false);
-		classPicture.gameObject.SetActive(true);
+		Instantiate (classPicture, new Vector3 (0, 5, -7), Quaternion.identity);
+		//hallPicture.gameObject.SetActive(false);
+		//classPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(6f);
-		classPicture.gameObject.SetActive(false);
-		failPicture.gameObject.SetActive(true);
+		Instantiate (failPicture, new Vector3 (0, 5, -8), Quaternion.identity);
+		//classPicture.gameObject.SetActive(false);
+		//failPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(16f);
-		failPicture.gameObject.SetActive(false);
-		burgerKanePicture.gameObject.SetActive(true);
+		Instantiate (burgerKanePicture, new Vector3 (0, 5, -9), Quaternion.identity);
+		//failPicture.gameObject.SetActive(false);
+		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(6f);
-		Application.LoadLevel (2);
+		Application.LoadLevel ("Mainstream");
 		
 	}
 
 	IEnumerator SubcultureMaleIntro()
 	{
 		//EventManager.instance.PlaySfx ("MaleSubOpening");
-		hallPicture.gameObject.SetActive(true);
+		Instantiate (hallPicture, new Vector3 (0, 5, -6), Quaternion.identity);
+		//hallPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(6f);
-		hallPicture.gameObject.SetActive(false);
-		classPicture.gameObject.SetActive(true);
+		Instantiate (classPicture, new Vector3 (0, 5, -7), Quaternion.identity);
+		//hallPicture.gameObject.SetActive(false);
+		//classPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(8f);
-		classPicture.gameObject.SetActive(false);
-		failPicture.gameObject.SetActive(true);
+		Instantiate (failPicture, new Vector3 (0, 5, -8), Quaternion.identity);
+		//classPicture.gameObject.SetActive(false);
+		//failPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(11f);
-		failPicture.gameObject.SetActive(false);
-		burgerKanePicture.gameObject.SetActive(true);
+		Instantiate (burgerKanePicture, new Vector3 (0, 5, -9), Quaternion.identity);
+		//failPicture.gameObject.SetActive(false);
+		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(12f);
-		Application.LoadLevel (4);
+		Application.LoadLevel ("Subculture");
 		
 	}
 
 	IEnumerator SubcultureFemaleIntro()
 	{
 		//EventManager.instance.PlaySfx ("FemSubOpening");
-		hallPicture.gameObject.SetActive(true);
+		Instantiate (hallPicture, new Vector3 (0, 5, -6), Quaternion.identity);
+		//hallPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(7.5f);
-		hallPicture.gameObject.SetActive(false);
-		classPicture.gameObject.SetActive(true);
+		Instantiate (classPicture, new Vector3 (0, 5, -7), Quaternion.identity);
+		//hallPicture.gameObject.SetActive(false);
+		//classPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(8.3f);
-		classPicture.gameObject.SetActive(false);
-		failPicture.gameObject.SetActive(true);
+		Instantiate (failPicture, new Vector3 (0, 5, -8), Quaternion.identity);
+		//classPicture.gameObject.SetActive(false);
+		//failPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(11f);
-		failPicture.gameObject.SetActive(false);
-		burgerKanePicture.gameObject.SetActive(true);
+		Instantiate (burgerKanePicture, new Vector3 (0, 5, -9), Quaternion.identity);
+		//failPicture.gameObject.SetActive(false);
+		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(9f);
-		Application.LoadLevel (4);
+		Application.LoadLevel ("Subculture");
 		
 	}
 
