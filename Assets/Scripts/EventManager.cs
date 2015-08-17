@@ -287,6 +287,7 @@ public class EventManager : MonoBehaviour
 	{
 		NewGame ();
 		mainstreamCurrent = true;
+		mainstreamComplete = true;
 
 		if (male == true)
 		{
@@ -300,6 +301,7 @@ public class EventManager : MonoBehaviour
 	{
 		NewGame ();
 		subcultureCurrent = true;
+		subcultureComplete = true;
 
 		if (male == true)
 		{

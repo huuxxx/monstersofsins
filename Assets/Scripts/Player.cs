@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
 
 	public Animator playerAnimate;
 
+	public bool lockMovement = false;
+
 	private AudioSource runningSFX;
 
 	private bool grounded = false;
@@ -58,7 +60,7 @@ public class Player : MonoBehaviour
 		Grounded ();
 		StatusBar ();
 
-		if (showoffTimer <= 0) {
+		if (showoffTimer <= 0 && !lockMovement) {
 			Controls ();
 		}
 		showoffTimer -= Time.deltaTime;
@@ -291,5 +293,13 @@ public class Player : MonoBehaviour
 
 	void ExitFriendly(){
 		showOffArea = null;
+	}
+
+	void Lock(bool lockMov){
+		if (lockMov) {
+			lockMovement = true;
+		} else {
+			lockMovement = false;
+		}
 	}
 }
