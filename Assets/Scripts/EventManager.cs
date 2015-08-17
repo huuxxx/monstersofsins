@@ -285,11 +285,10 @@ public class EventManager : MonoBehaviour
 
 	public void MainstreamGUI()
 	{
-		NewGame ();
 		mainstreamCurrent = true;
-		mainstreamComplete = true;
+		//mainstreamComplete = true;
 
-		if (male == true)
+		if (male)
 		{
 			StartCoroutine("MainstreamMaleIntro");
 		}
@@ -299,11 +298,10 @@ public class EventManager : MonoBehaviour
 	
 	public void SubcultureGUI()
 	{
-		NewGame ();
 		subcultureCurrent = true;
-		subcultureComplete = true;
+		//subcultureComplete = true;
 
-		if (male == true)
+		if (male)
 		{
 			StartCoroutine("SubcultureMaleIntro");
 		}
@@ -360,12 +358,12 @@ public class EventManager : MonoBehaviour
 	{
 		if (mainstreamCurrent && mainStatus <= 0)
 		{
-			//death and reload main
+			Application.LoadLevel ("Mainstream");
 		}
 
 		if (subcultureCurrent && subStatus <= 0)
 		{
-			//death and reload sub
+			Application.LoadLevel ("Subculture");
 		}
 
 		if (damageTaken)
