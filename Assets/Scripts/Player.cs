@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
 
 	public Animator playerAnimate;
 
+	private AudioSource runningSFX;
+
 	private bool grounded = false;
 
 	private bool rightFaced;
@@ -43,6 +45,7 @@ public class Player : MonoBehaviour
 
 	void Start(){
 		startXScale = playerSprite.transform.localScale.x;
+		runningSFX = GetComponent<AudioSource> ();
 	}
 
 	void FixedUpdate ()
@@ -133,10 +136,27 @@ public class Player : MonoBehaviour
 			rightFaced = false;
 			Flip ();
 		}
+
+		//Run sfx
+		if (h != 0 && grounded) {
+			if (!runningSFX.isPlaying) {
+				runningSFX.Play ();
+			}
+		} else {
+			if (runningSFX.isPlaying) {
+				runningSFX.Stop ();
+			}
+		}
 		
 		// Jump
-		if ((grounded == true) && Input.GetButtonDown("Jump"))
+		if ((grounded == true) && Input.GetButtonDown("Jump") && !climbingLadder)
 		{
+			if (EventManager.instance.male){
+				EventManager.instance.PlaySfx ("PlayerMaleJump");
+			} else {
+				EventManager.instance.PlaySfx ("PlayerFemJump");
+			}
+
 			playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 		}
 

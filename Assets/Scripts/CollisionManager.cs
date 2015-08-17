@@ -33,8 +33,6 @@ public class CollisionManager : MonoBehaviour
 		if (temp.gameObject.tag == "Player")
 		{
 
-			EventManager.instance.PlaySfx("Status Gain");
-
 			// End game checkpoint triggers the next scene
 			if (checkpoint)
 			{

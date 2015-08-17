@@ -162,10 +162,12 @@ public class EventManager : MonoBehaviour
 	{
 		foreach (var clip in soundEffects)
 		{
-			if (clip.name == name)
-			{
-				sfxSource.PlayOneShot(clip);
-				break;
+			if (clip != null){
+				if (clip.name == name)
+				{
+					sfxSource.PlayOneShot(clip);
+					break;
+				}
 			}
 		}
 	}
@@ -208,8 +210,8 @@ public class EventManager : MonoBehaviour
 		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(8f);
 		Application.LoadLevel ("Mainstream");
-		EventManager.instance.PlaySfx ("MaleSubGameStart");
-		
+		EventManager.instance.PlaySfx ("MaleMainGameStart");
+		musicSource.Stop ();
 	}
 
 	IEnumerator MainstreamFemaleIntro()
@@ -232,7 +234,7 @@ public class EventManager : MonoBehaviour
 		yield return new WaitForSeconds(6f);
 		Application.LoadLevel ("Mainstream");
 		EventManager.instance.PlaySfx ("FemMainGameStart");
-		
+		musicSource.Stop ();
 	}
 
 	IEnumerator SubcultureMaleIntro()
@@ -255,7 +257,7 @@ public class EventManager : MonoBehaviour
 		yield return new WaitForSeconds(12f);
 		Application.LoadLevel ("Subculture");
 		EventManager.instance.PlaySfx ("MaleSubGameStart");
-		
+		musicSource.Stop ();
 	}
 
 	IEnumerator SubcultureFemaleIntro()
@@ -278,7 +280,7 @@ public class EventManager : MonoBehaviour
 		yield return new WaitForSeconds(9f);
 		Application.LoadLevel ("Subculture");
 		EventManager.instance.PlaySfx ("FemSubGameStart");
-		
+		musicSource.Stop ();
 	}
 
 	public void MainstreamGUI()
