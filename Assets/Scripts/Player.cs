@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
 
 	public Animator playerAnimate;
 
+	public AudioClip interactSFX;
+
 	public bool lockMovement = false;
 
 	private AudioSource runningSFX;
@@ -31,7 +33,7 @@ public class Player : MonoBehaviour
 
 	public bool climbingLadder;
 
-	public float showoffLength = 3f;
+	public float showoffLength = 5f;
 
 	private float showoffTimer;
 
@@ -115,7 +117,7 @@ public class Player : MonoBehaviour
 			//Set timer that stops movement and plays animation
 			showoffTimer = showoffLength;
 	
-			//**Play showoff audio
+			AudioSource.PlayClipAtPoint(interactSFX, transform.position);
 			
 			//Add status, disable that friendly.
 			if (showOffArea != null){
