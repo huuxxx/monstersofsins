@@ -25,10 +25,12 @@ public class EnemyAI2 : MonoBehaviour
 	private int jumpInterval = 4;
 
 	private bool rightFaced;
+
+	public Animator anim;
 	
 	void Start ()
 	{
-	
+		anim.SetBool ("Run", true);
 		enemy = this.gameObject;
 		enemyRigid = GetComponent<Rigidbody> ();
 

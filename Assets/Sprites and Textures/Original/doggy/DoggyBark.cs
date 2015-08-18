@@ -12,15 +12,17 @@ public class DoggyBark : MonoBehaviour {
 	void Start(){
 		dogBark = GetComponent<AudioSource> ();
 		dogAnim = GetComponent<Animator> ();
-		playerTrans = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+		Invoke ("FindPlayer", 1f); // delayed this so it didnt get the wrong gender player before sex change
 		startScale = transform.localScale;
 	}
 
 	void Update(){
-		if (playerTrans.position.x < transform.position.x) {
-			transform.localScale = new Vector3 (-startScale.x, transform.localScale.y, transform.localScale.z);
-		} else {
-			transform.localScale = new Vector3 (startScale.x, transform.localScale.y, transform.localScale.z);
+		if (playerTrans != null) {
+			if (playerTrans.position.x < transform.position.x) {
+				transform.localScale = new Vector3 (-startScale.x, transform.localScale.y, transform.localScale.z);
+			} else {
+				transform.localScale = new Vector3 (startScale.x, transform.localScale.y, transform.localScale.z);
+			}
 		}
 
 		if (barkTimer > 0f) {
@@ -38,5 +40,9 @@ public class DoggyBark : MonoBehaviour {
 			barkTimer = 5f;
 		}
 
+	}
+
+	void FindPlayer(){
+		playerTrans = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 	}
 }

@@ -21,9 +21,9 @@ public class Player : MonoBehaviour
 
 	public Animator playerAnimate;
 
-	public AudioClip interactSFX;
-
 	public bool lockMovement = false;
+
+	public AudioClip[] interactSFX;
 
 	private AudioSource runningSFX;
 
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
 
 	public float showoffLength = 5f;
 
-	private float showoffTimer;
+	public float showoffTimer;
 
 	private float h;
 
@@ -48,6 +48,11 @@ public class Player : MonoBehaviour
 	private float statusBarScale;
 
 	void Start(){
+		startXScale = playerSprite.transform.localScale.x;
+		runningSFX = GetComponent<AudioSource> ();
+	}
+
+	void Awake(){
 		startXScale = playerSprite.transform.localScale.x;
 		runningSFX = GetComponent<AudioSource> ();
 	}
@@ -115,9 +120,12 @@ public class Player : MonoBehaviour
 		//Showoff
 		if (Input.GetKey (KeyCode.F) && !climbingLadder && showoffTimer < 0f) {
 			//Set timer that stops movement and plays animation
-			showoffTimer = showoffLength;
-	
-			AudioSource.PlayClipAtPoint(interactSFX, transform.position);
+			int rng = Random.Range (0, interactSFX.Length);
+			if (interactSFX.Length != 0){
+				AudioSource.PlayClipAtPoint(interactSFX[rng], transform.position);
+			}
+
+			showoffTimer = interactSFX[rng].length;
 			
 			//Add status, disable that friendly.
 			if (showOffArea != null){

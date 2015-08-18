@@ -74,9 +74,11 @@ public class CollisionManager : MonoBehaviour
 				EventManager.instance.damageTaken = true;
 
 				int rng = Random.Range (0, taunts.Length);
-				if (taunts[rng] != null){
+				if (taunts.Length != 0){
 					AudioSource.PlayClipAtPoint(taunts[rng], transform.position);
 				}
+
+				EventManager.instance.damageTaken = true;
 
 				if (EventManager.instance.mainstreamCurrent && subcultureNPC == true) {
 					EventManager.instance.mainStatus -= 5;

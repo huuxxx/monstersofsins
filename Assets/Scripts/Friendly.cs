@@ -16,13 +16,13 @@ public class Friendly : MonoBehaviour {
 
 	void Showoff () {
 		if (EventManager.instance.subcultureCurrent){
-			EventManager.instance.subStatus += numberFriendlies * 10;
+			EventManager.instance.subStatus += 10;
 		} else {
-			EventManager.instance.mainStatus += numberFriendlies * 10;
+			EventManager.instance.mainStatus += 10;
 		}
 
 		sprUI.enabled = false;
-		Invoke ("Praise", playerObj.showoffLength);
+		Invoke ("Praise", playerObj.showoffTimer);
 	}
 
 	void OnTriggerEnter(Collider col){

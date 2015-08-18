@@ -285,6 +285,7 @@ public class EventManager : MonoBehaviour
 
 	public void MainstreamGUI()
 	{
+		musicSource.Stop ();
 		mainstreamCurrent = true;
 		//mainstreamComplete = true;
 
@@ -298,6 +299,7 @@ public class EventManager : MonoBehaviour
 	
 	public void SubcultureGUI()
 	{
+		musicSource.Stop ();
 		subcultureCurrent = true;
 		//subcultureComplete = true;
 
@@ -330,6 +332,23 @@ public class EventManager : MonoBehaviour
 		}
 	}
 
+	void Update(){
+		DamageManager ();
+
+		if (mainStatus >= 100) {
+			mainStatus = 100;
+		}
+		if (subStatus >= 100) {
+			subStatus = 100;
+		}
+		if (mainStatus <= 0) {
+			mainStatus = 0;
+		}
+		if (subStatus <= 0) {
+			subStatus = 0;
+		}
+	}
+
 	// Event Handler to determine which level/scene is to be loaded
 	public void CompletionChecker()
 	{
@@ -356,16 +375,6 @@ public class EventManager : MonoBehaviour
 	// Make player temporarily invulnerable after taking damage and check for death
 	public void DamageManager()
 	{
-		if (mainstreamCurrent && mainStatus <= 0)
-		{
-			Application.LoadLevel ("Mainstream");
-		}
-
-		if (subcultureCurrent && subStatus <= 0)
-		{
-			Application.LoadLevel ("Subculture");
-		}
-
 		if (damageTaken)
 		{
 			invulnTimer += Time.deltaTime;
@@ -376,6 +385,7 @@ public class EventManager : MonoBehaviour
 			damageTaken = false;
 			invulnTimer = 0;
 		}
+		
 	}
 
 	// Reset Player Data function

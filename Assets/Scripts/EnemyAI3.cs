@@ -21,7 +21,10 @@ public class EnemyAI3 : MonoBehaviour {
 		rightFaced = false;
 		Flip ();
 		enemy = this.gameObject;
-		projectileSpawn = this.gameObject; //temp until we get animations with actual throw positions.
+
+		if (projectileSpawn == null) {
+			projectileSpawn = this.gameObject;
+		}
 	}
 
 	void FixedUpdate ()

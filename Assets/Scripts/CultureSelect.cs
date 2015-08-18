@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class CultureSelect : MonoBehaviour {
 
 	public Button subButton;
-	public Button MainButton;
+	public Button mainButton;
 
 	public Text subText;
-	public Text MainText;
+	public Text mainText;
 
 	void Start(){
 
@@ -18,13 +18,13 @@ public class CultureSelect : MonoBehaviour {
 		}
 
 		if (EventManager.instance.mainstreamComplete) {
-			MainButton.interactable = false;
-			subText.text = "Closed";
+			mainButton.interactable = false;
+			mainText.text = "Closed";
 		}
 
 		if (EventManager.instance.subcultureComplete) {
 			subButton.interactable = false;
-			MainText.text = "Closed";
+			subText.text = "Closed";
 		}
 
 	}
