@@ -23,6 +23,8 @@ public class CollisionManager : MonoBehaviour
 
 	public bool thirdPartyNPC;
 
+	public AudioClip[] taunts;
+
 	void OnTriggerEnter(Collider temp)
 	{
 		// Do action determined by bool setting
@@ -70,6 +72,11 @@ public class CollisionManager : MonoBehaviour
 			else if (damageCollider && EventManager.instance.damageTaken == false) {
 				EventManager.instance.DamageManager ();
 				EventManager.instance.damageTaken = true;
+
+				int rng = Random.Range (0, taunts.Length);
+				if (taunts[rng] != null){
+					AudioSource.PlayClipAtPoint(taunts[rng], transform.position);
+				}
 
 				if (EventManager.instance.mainstreamCurrent && subcultureNPC == true) {
 					EventManager.instance.mainStatus -= 5;
