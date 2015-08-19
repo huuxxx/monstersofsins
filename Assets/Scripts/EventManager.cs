@@ -210,8 +210,9 @@ public class EventManager : MonoBehaviour
 		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(8f);
 		Application.LoadLevel ("Mainstream");
-		EventManager.instance.PlaySfx ("MaleMainGameStart");
 		musicSource.Stop ();
+		yield return new WaitForSeconds(2f);
+		EventManager.instance.PlaySfx ("MaleMainGameStart");
 	}
 
 	IEnumerator MainstreamFemaleIntro()
@@ -233,8 +234,9 @@ public class EventManager : MonoBehaviour
 		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(6f);
 		Application.LoadLevel ("Mainstream");
-		EventManager.instance.PlaySfx ("FemMainGameStart");
 		musicSource.Stop ();
+		yield return new WaitForSeconds(2f);
+		EventManager.instance.PlaySfx ("FemMainGameStart");
 	}
 
 	IEnumerator SubcultureMaleIntro()
@@ -256,8 +258,9 @@ public class EventManager : MonoBehaviour
 		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(12f);
 		Application.LoadLevel ("Subculture");
-		EventManager.instance.PlaySfx ("MaleSubGameStart");
 		musicSource.Stop ();
+		yield return new WaitForSeconds(2f);
+		EventManager.instance.PlaySfx ("MaleSubGameStart");
 	}
 
 	IEnumerator SubcultureFemaleIntro()
@@ -279,8 +282,9 @@ public class EventManager : MonoBehaviour
 		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(9f);
 		Application.LoadLevel ("Subculture");
-		EventManager.instance.PlaySfx ("FemSubGameStart");
 		musicSource.Stop ();
+		yield return new WaitForSeconds(2f);
+		EventManager.instance.PlaySfx ("FemSubGameStart");
 	}
 
 	public void MainstreamGUI()
