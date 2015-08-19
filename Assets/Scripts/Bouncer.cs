@@ -13,8 +13,10 @@ public class Bouncer : MonoBehaviour {
 				if (EventManager.instance.subStatus >= 85){
 					EventManager.instance.PlaySfx ("BouncerApprove");
 					if (EventManager.instance.mainstreamComplete && EventManager.instance.subcultureComplete){
+						EventManager.instance.subcultureCurrent = false;
 						levelToLoad = "Credits";
 					} else {
+						EventManager.instance.subcultureCurrent = false;
 						levelToLoad = "CultureSelection";
 					}
 					Invoke ("LoadLevel", 4f);
@@ -27,8 +29,10 @@ public class Bouncer : MonoBehaviour {
 				if (EventManager.instance.mainStatus >= 85){
 					EventManager.instance.PlaySfx ("BouncerApprove");
 					if (EventManager.instance.mainstreamComplete && EventManager.instance.subcultureComplete){
+						EventManager.instance.mainstreamCurrent = false;
 						levelToLoad = "Credits";
 					} else {
+						EventManager.instance.mainstreamCurrent = false;
 						levelToLoad = "CultureSelection";
 					}
 					Invoke ("LoadLevel", 4f);
