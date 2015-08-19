@@ -287,6 +287,7 @@ public class EventManager : MonoBehaviour
 	{
 		musicSource.Stop ();
 		mainstreamCurrent = true;
+		mainstreamComplete = true;
 		//mainstreamComplete = true;
 
 		if (male)
@@ -301,6 +302,7 @@ public class EventManager : MonoBehaviour
 	{
 		musicSource.Stop ();
 		subcultureCurrent = true;
+		subcultureComplete = true;
 		//subcultureComplete = true;
 
 		if (male)
