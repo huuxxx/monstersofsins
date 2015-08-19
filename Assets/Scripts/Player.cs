@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
 
 	private float statusBarScale;
 
+	private float climbingMod = 1;
+
 	void Start(){
 		startXScale = playerSprite.transform.localScale.x;
 		runningSFX = GetComponent<AudioSource> ();
@@ -60,7 +62,12 @@ public class Player : MonoBehaviour
 	void FixedUpdate ()
 	{
 		// Get and set control inputs
-		h = Input.GetAxis("Horizontal");
+		if (climbingLadder) {
+			climbingMod = 2.5f;
+		} else {
+			climbingMod = 1f;
+		}
+		h = (Input.GetAxis("Horizontal") / climbingMod);
 		v = Input.GetAxis("Vertical");
 		
 		// Function calls

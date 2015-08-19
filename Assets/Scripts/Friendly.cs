@@ -6,7 +6,7 @@ public class Friendly : MonoBehaviour {
 	public int numberFriendlies = 1; //set this to the amount of friendlies in this area so you get more status per npc
 	public AudioClip praise;
 	public SpriteRenderer sprUI;
-	Player playerObj;
+	public Player playerObj;
 
 		
 	void Start(){
@@ -16,9 +16,11 @@ public class Friendly : MonoBehaviour {
 
 	void Showoff () {
 		if (EventManager.instance.subcultureCurrent){
-			EventManager.instance.subStatus += 10;
+			EventManager.instance.subStatus += 13;
+			EventManager.instance.PlaySfx("StatusGain");
 		} else {
-			EventManager.instance.mainStatus += 10;
+			EventManager.instance.mainStatus += 13;
+			EventManager.instance.PlaySfx("StatusGain");
 		}
 
 		sprUI.enabled = false;

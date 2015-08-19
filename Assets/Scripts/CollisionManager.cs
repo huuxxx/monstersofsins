@@ -33,22 +33,18 @@ public class CollisionManager : MonoBehaviour
 			// End game checkpoint triggers the next scene
 			if (checkpoint) {
 				if (EventManager.instance.mainstreamCurrent == true && EventManager.instance.mainStatus >= 80) {
-					print ("Main stream complete");
 					EventManager.instance.mainstreamComplete = true;
 					EventManager.instance.CompletionChecker ();
 					StartCoroutine("MainstreamComplete");
 				} else if (EventManager.instance.mainStatus < 80) {
-					print ("Not enough main stream status, restarting level");
 					StartCoroutine("MainstreamMaleIntro");
 					Application.LoadLevel("Mainstream");
 				}
 
 				if (EventManager.instance.subcultureCurrent == true && EventManager.instance.subStatus >= 80) {
-					print ("Subculture complete");
 					EventManager.instance.subcultureComplete = true;
 					EventManager.instance.CompletionChecker ();
 				} else if (EventManager.instance.subStatus < 80) {
-					print ("Not enough subculture status, restarting level");
 					Application.LoadLevel("Subculture");
 				}
 
@@ -58,11 +54,9 @@ public class CollisionManager : MonoBehaviour
 			else if (statusPickup) {
 				if (EventManager.instance.mainstreamCurrent) {
 					EventManager.instance.mainStatus += 10;
-					Debug.Log ("Main stream status gained");
 					EventManager.instance.PlaySfx ("StatusGain");
 				} else if (EventManager.instance.subcultureCurrent) {
 					EventManager.instance.subStatus += 10;
-					Debug.Log ("Subculture status gained");
 					EventManager.instance.PlaySfx ("StatusGain");
 				}
 
@@ -83,19 +77,15 @@ public class CollisionManager : MonoBehaviour
 				if (EventManager.instance.mainstreamCurrent && subcultureNPC == true) {
 					EventManager.instance.mainStatus -= 5;
 					EventManager.instance.PlaySfx ("StatusLoss");
-					print ("Mainstream status lost");
 				} else if (EventManager.instance.subcultureCurrent && mainstreamNPC == true) {
 					EventManager.instance.subStatus -= 5;
 					EventManager.instance.PlaySfx ("StatusLoss");
-					print ("Subculture status lost");
 				} else if (EventManager.instance.subcultureCurrent && thirdPartyNPC == true) {
 					EventManager.instance.subStatus -= 5;
 					EventManager.instance.PlaySfx ("StatusLoss");
-					print ("Subculture status lost");
 				} else if (EventManager.instance.mainstreamCurrent && thirdPartyNPC == true) {
 					EventManager.instance.mainStatus -= 5;
 					EventManager.instance.PlaySfx ("StatusLoss");
-					print ("Mainstream status lost");
 				}
 			}
 
