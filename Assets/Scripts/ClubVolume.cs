@@ -17,7 +17,7 @@ public class ClubVolume : MonoBehaviour {
 	void Update () {
 		if (playerPos != null) {
 			currentDistance = transform.position.x - playerPos.transform.position.x;
-			clubVol.volume = Mathf.Lerp (1, 0, currentDistance / maxDistance);
+			clubVol.volume = Mathf.Lerp (clubMaxVol, -0.2f, currentDistance / maxDistance);
 		}
 	}
 
