@@ -8,6 +8,7 @@ public class DoggyBark : MonoBehaviour {
 	public Transform playerTrans;
 	Vector3 startScale;
 	float barkTimer = 0f;
+	public bool creditsDog = false;
 
 	void Start(){
 		dogBark = GetComponent<AudioSource> ();
@@ -43,6 +44,8 @@ public class DoggyBark : MonoBehaviour {
 	}
 
 	void FindPlayer(){
-		playerTrans = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+		if (!creditsDog) {
+			playerTrans = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform> ();
+		}
 	}
 }

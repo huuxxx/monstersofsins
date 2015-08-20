@@ -7,7 +7,12 @@ public class Credits : MonoBehaviour {
 
 	public float scrollSpeed = 0.6f;
 
-	public float endTimer = 45f;
+	public float endTimer = 35f;
+
+	void Start(){
+		EventManager.instance.male = false;
+		EventManager.instance.female = false;
+	}
 
 	void FixedUpdate()
 	{
