@@ -51,9 +51,12 @@ public class Player : MonoBehaviour
 
 	private float climbingMod = 1;
 
+	private int SFXselect;
+
 	void Start(){
 		startXScale = playerSprite.transform.localScale.x;
 		runningSFX = GetComponent<AudioSource> ();
+		SFXselect = interactSFX.Length - 1;
 	}
 
 	void Awake(){
@@ -133,15 +136,19 @@ public class Player : MonoBehaviour
 		//Showoff
 		if (Input.GetKey (KeyCode.F) && !climbingLadder && showoffTimer < 0f) {
 			//Set timer that stops movement and plays animation
-			int rng = Random.Range (0, interactSFX.Length);
+		//	int rng = Random.Range (0, interactSFX.Length);
 			if (interactSFX.Length != 0){
-				AudioSource.PlayClipAtPoint(interactSFX[rng], transform.position);
+				AudioSource.PlayClipAtPoint(interactSFX[SFXselect], transform.position);
 			}
 
 			if (EventManager.instance.mainstreamCurrent && camFlash != null){
 				Invoke ("CamFlash", 2f);
 			}
-			showoffTimer = interactSFX[rng].length;
+			showoffTimer = interactSFX[SFXselect].length;
+			SFXselect --;
+			if (SFXselect < 0){
+				SFXselect = interactSFX.Length - 1;
+			}
 			
 			//Add status, disable that friendly.
 			if (showOffArea != null){

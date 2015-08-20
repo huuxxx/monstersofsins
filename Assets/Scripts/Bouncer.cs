@@ -46,6 +46,9 @@ public class Bouncer : MonoBehaviour {
 	}
 
 	void LoadLevel(){
+		if (levelToLoad == "Credits") {
+			EventManager.instance.musicSource.Play();
+		}
 		Application.LoadLevel (levelToLoad);
 	}
 }

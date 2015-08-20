@@ -43,7 +43,7 @@ public class EventManager : MonoBehaviour
 	private const string audioEnabledKey = "IsAudioEnabled";
 	
 	[SerializeField]
-	private AudioSource musicSource = null;
+	public AudioSource musicSource = null;
 	
 	[SerializeField]
 	private AudioSource sfxSource = null;
@@ -205,7 +205,7 @@ public class EventManager : MonoBehaviour
 		//classPicture.gameObject.SetActive(false);
 		//failPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(7f);
-		Instantiate (burgerKanePicture, new Vector3 (0, 5, -9), Quaternion.identity);
+		Instantiate (burgerKanePicture, new Vector3 (0, 9.8f, -9), Quaternion.identity);
 		//failPicture.gameObject.SetActive(false);
 		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(8f);
@@ -229,7 +229,7 @@ public class EventManager : MonoBehaviour
 		//classPicture.gameObject.SetActive(false);
 		//failPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(16f);
-		Instantiate (burgerKanePicture, new Vector3 (0, 5, -9), Quaternion.identity);
+		Instantiate (burgerKanePicture, new Vector3 (0, 9.8f, -9), Quaternion.identity);
 		//failPicture.gameObject.SetActive(false);
 		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(6f);
@@ -253,7 +253,7 @@ public class EventManager : MonoBehaviour
 		//classPicture.gameObject.SetActive(false);
 		//failPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(11f);
-		Instantiate (burgerKanePicture, new Vector3 (0, 5, -9), Quaternion.identity);
+		Instantiate (burgerKanePicture, new Vector3 (0, 9.8f, -9), Quaternion.identity);
 		//failPicture.gameObject.SetActive(false);
 		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(12f);
@@ -277,7 +277,7 @@ public class EventManager : MonoBehaviour
 		//classPicture.gameObject.SetActive(false);
 		//failPicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(11f);
-		Instantiate (burgerKanePicture, new Vector3 (0, 5, -9), Quaternion.identity);
+		Instantiate (burgerKanePicture, new Vector3 (0, 9.8f, -9), Quaternion.identity);
 		//failPicture.gameObject.SetActive(false);
 		//burgerKanePicture.gameObject.SetActive(true);
 		yield return new WaitForSeconds(9f);
@@ -352,6 +352,15 @@ public class EventManager : MonoBehaviour
 		}
 		if (subStatus <= 0) {
 			subStatus = 0;
+		}
+
+		//Cheat for extra status.
+		if (Input.GetKeyDown(KeyCode.O)){
+			if (EventManager.instance.mainstreamCurrent){
+				mainStatus += 15;
+			} else if (EventManager.instance.subcultureCurrent){
+				subStatus += 15;
+			}
 		}
 	}
 
