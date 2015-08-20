@@ -11,6 +11,7 @@ public class Friendly : MonoBehaviour {
 		
 	void Start(){
 		playerObj = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
+		Invoke ("FindPlayer", 1f); // delayed this so it didnt get the wrong gender player before sex change
 		sprUI = GetComponentInChildren<SpriteRenderer> ();
 	}
 
@@ -38,5 +39,9 @@ public class Friendly : MonoBehaviour {
 	void Praise(){
 		AudioSource.PlayClipAtPoint (praise, transform.position); //Has to be a clip @ point because obj is destroyed
 		Destroy (this.gameObject, 0.2f);
+	}
+
+	void FindPlayer(){
+		playerObj = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 	}
 }

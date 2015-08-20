@@ -5,7 +5,7 @@ public class DoggyBark : MonoBehaviour {
 
 	AudioSource dogBark;
 	Animator dogAnim;
-	Transform playerTrans;
+	public Transform playerTrans;
 	Vector3 startScale;
 	float barkTimer = 0f;
 

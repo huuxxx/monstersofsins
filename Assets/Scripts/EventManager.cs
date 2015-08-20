@@ -427,4 +427,8 @@ public class EventManager : MonoBehaviour
 		print ("Unpaused");
 		paused = false;
 	}
+
+	public void LoadCredits(){
+		Application.LoadLevel ("Credits");
+	}
 }
