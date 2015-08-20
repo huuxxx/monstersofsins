@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
 	{
 		destroyTimer += Time.deltaTime;
 
-		if (destroyTimer >= 1f)
+		if (destroyTimer >= 1.5f)
 		{
 			GameObject.Destroy(this.gameObject);
 		}

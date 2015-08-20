@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
 
 	public AudioClip[] interactSFX;
 
+	public SpriteRenderer camFlash;
+
 	private AudioSource runningSFX;
 
 	private bool grounded = false;
@@ -78,6 +80,10 @@ public class Player : MonoBehaviour
 			Controls ();
 		}
 		showoffTimer -= Time.deltaTime;
+		
+		if (camFlash != null) {
+			camFlash.color = new Color (camFlash.color.r, camFlash.color.g, camFlash.color.b, Mathf.Lerp (camFlash.color.a, 0.05f, Time.deltaTime * 1.5f));
+		}
 	}
 
 	void Update()
@@ -132,6 +138,9 @@ public class Player : MonoBehaviour
 				AudioSource.PlayClipAtPoint(interactSFX[rng], transform.position);
 			}
 
+			if (EventManager.instance.mainstreamCurrent && camFlash != null){
+				Invoke ("CamFlash", 2f);
+			}
 			showoffTimer = interactSFX[rng].length;
 			
 			//Add status, disable that friendly.
@@ -139,6 +148,7 @@ public class Player : MonoBehaviour
 					showOffArea.SendMessage("Showoff");
 			}
 		}
+
 
 		// Right
 		if (h > 0)
@@ -318,5 +328,9 @@ public class Player : MonoBehaviour
 		} else {
 			lockMovement = false;
 		}
+	}
+
+	void CamFlash(){
+		camFlash.color = new Color(camFlash.color.r, camFlash.color.g, camFlash.color.b, 1f);
 	}
 }
